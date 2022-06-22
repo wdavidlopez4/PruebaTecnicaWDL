@@ -27,8 +27,9 @@ namespace PruebaTecnicaWDL.Infrastructure.Employees
             using SqlCommand cmd = new SqlCommand(NAME_PROCEDURE, sql);
 
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@operation", 0));
-            cmd.Parameters.Add(new SqlParameter("@Id", id));
+            cmd.Parameters.Add(new SqlParameter("@operation", 1));
+            cmd.Parameters.Add(new SqlParameter("@Id", int.Parse(id)));
+
             Employee response = null;
             await sql.OpenAsync();
 
@@ -49,7 +50,7 @@ namespace PruebaTecnicaWDL.Infrastructure.Employees
             using SqlCommand cmd = new SqlCommand(NAME_PROCEDURE, sql);
 
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@operation", 1));
+            cmd.Parameters.Add(new SqlParameter("@operation", 2));
 
             var response = new List<Employee>();
             await sql.OpenAsync();
@@ -71,8 +72,8 @@ namespace PruebaTecnicaWDL.Infrastructure.Employees
             using SqlCommand cmd = new SqlCommand(NAME_PROCEDURE, sql);
 
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@operation", 2));
-            cmd.Parameters.Add(new SqlParameter("@Id", employee.Id));
+            cmd.Parameters.Add(new SqlParameter("@operation", 3));
+            cmd.Parameters.Add(new SqlParameter("@Id", employee.Id.Value));
             cmd.Parameters.Add(new SqlParameter("@Nombre", employee.Name));
             cmd.Parameters.Add(new SqlParameter("@Apellido", employee.LastName));
             cmd.Parameters.Add(new SqlParameter("@Telefono", employee.CellPhone));
@@ -88,8 +89,8 @@ namespace PruebaTecnicaWDL.Infrastructure.Employees
             using SqlCommand cmd = new SqlCommand(NAME_PROCEDURE, sql);
 
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@operation", 3));
-            cmd.Parameters.Add(new SqlParameter("@Id", employee.Id));
+            cmd.Parameters.Add(new SqlParameter("@operation", 4));
+            cmd.Parameters.Add(new SqlParameter("@Id", employee.Id.Value));
             cmd.Parameters.Add(new SqlParameter("@Nombre", employee.Name));
             cmd.Parameters.Add(new SqlParameter("@Apellido", employee.LastName));
             cmd.Parameters.Add(new SqlParameter("@Telefono", employee.CellPhone));
@@ -106,7 +107,7 @@ namespace PruebaTecnicaWDL.Infrastructure.Employees
                 name: (string) reader["Nombre"],
                 lastName: (string)reader["Apellido"],
                 date: (string)reader["FechaNacimiento"],
-                cellPhone: (string)reader["Telefono"]);
+                cellPhone: (string)reader["Telefoo"]);
         }
     }
 }

@@ -1,7 +1,12 @@
+using PruebaTecnicaWDL.Infrastructure.Startup;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//iniciar la aplicacion backend
+PruebaTecnicaWDLStartup.SetUp(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 

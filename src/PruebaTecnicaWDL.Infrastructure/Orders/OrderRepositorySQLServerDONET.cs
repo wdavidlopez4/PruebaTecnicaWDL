@@ -27,8 +27,8 @@ namespace PruebaTecnicaWDL.Infrastructure.Orders
             using SqlCommand cmd = new SqlCommand(NAME_PROCEDURE, sql);
 
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@Id", id));
-            cmd.Parameters.Add(new SqlParameter("@operation", 0));
+            cmd.Parameters.Add(new SqlParameter("@Id", int.Parse(id)));
+            cmd.Parameters.Add(new SqlParameter("@operation", 1));
 
             Order response = null;
             await sql.OpenAsync();
@@ -50,7 +50,7 @@ namespace PruebaTecnicaWDL.Infrastructure.Orders
             using SqlCommand cmd = new SqlCommand(NAME_PROCEDURE, sql);
 
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@operation", 1));
+            cmd.Parameters.Add(new SqlParameter("@operation", 2));
 
             var response = new List<Order>();
             await sql.OpenAsync();
@@ -72,8 +72,8 @@ namespace PruebaTecnicaWDL.Infrastructure.Orders
             using SqlCommand cmd = new SqlCommand(NAME_PROCEDURE, sql);
 
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@operation", 2));
-            cmd.Parameters.Add(new SqlParameter("@Id", employee.Id));
+            cmd.Parameters.Add(new SqlParameter("@operation", 3));
+            cmd.Parameters.Add(new SqlParameter("@Id", employee.Id.Value));
             cmd.Parameters.Add(new SqlParameter("@EmpleadoID", employee.EmployeeId));
             cmd.Parameters.Add(new SqlParameter("@DetallerOrdenes", employee.Detail));
 
@@ -88,8 +88,8 @@ namespace PruebaTecnicaWDL.Infrastructure.Orders
             using SqlCommand cmd = new SqlCommand(NAME_PROCEDURE, sql);
 
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.Add(new SqlParameter("@operation", 3));
-            cmd.Parameters.Add(new SqlParameter("@Id", employee.Id));
+            cmd.Parameters.Add(new SqlParameter("@operation", 4));
+            cmd.Parameters.Add(new SqlParameter("@Id", employee.Id.Value));
             cmd.Parameters.Add(new SqlParameter("@EmpleadoID", employee.EmployeeId));
             cmd.Parameters.Add(new SqlParameter("@DetallerOrdenes", employee.Detail));
 

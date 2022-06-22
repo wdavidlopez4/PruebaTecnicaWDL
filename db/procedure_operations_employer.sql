@@ -10,29 +10,39 @@ GO
 -- =============================================
 CREATE PROCEDURE EmployeeProcedure 
 	-- Add the parameters for the stored procedure here
-	@Id varchar(50),
+	@Id varchar(255)= NULL,
 	@operation int,
-	@Nombre varchar(50),
-	@Apellido varchar(50),
-	@Telefono varchar(50),
-	@FechaNacimiento varchar(50)
+	@Nombre varchar(255)= NULL,
+	@Apellido varchar(255)= NULL,
+	@Telefono varchar(255)= NULL,
+	@FechaNacimiento varchar(255)= NULL
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	if @operation = 0
+	if @operation = 1
 	BEGIN
-		select * from EMPLEADO where Id = @Id;
-	END
-
-	else if @operation = 1
-	BEGIN
-		Select * from EMPLEADO;
+		SELECT [Id]
+		  ,[Apellido]
+		  ,[Nombre]
+		  ,[FechaNacimiento]
+		  ,[Telefoo]
+		FROM [dbo].[EMPLEADO] where Id = @Id;
 	END
 
 	else if @operation = 2
+	BEGIN
+		SELECT [Id]
+		  ,[Apellido]
+		  ,[Nombre]
+		  ,[FechaNacimiento]
+		  ,[Telefoo]
+		FROM [dbo].[EMPLEADO];
+	END
+
+	else if @operation = 3
 	BEGIN
 		INSERT INTO [dbo].[EMPLEADO]
            ([Id]
@@ -44,7 +54,7 @@ BEGIN
            (@Id, @Apellido, @Nombre, @FechaNacimiento, @Telefono);
 	END
 
-	else if @operation = 3
+	else if @operation = 4
 	BEGIN
 		UPDATE [dbo].[EMPLEADO]
 			SET [Id] = @Id

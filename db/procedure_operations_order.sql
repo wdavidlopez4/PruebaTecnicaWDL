@@ -20,27 +20,34 @@ GO
 -- =============================================
 CREATE PROCEDURE OrderProcedure 
 	-- Add the parameters for the stored procedure here
-	@Id varchar(50),
+	@Id varchar(255)= NULL,
 	@operation int,
-	@EmpleadoID varchar(50),
-	@DetallerOrdenes varchar(50)
+	@EmpleadoID varchar(255)= NULL,
+	@DetallerOrdenes varchar(255)= NULL
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	if @operation = 0
+	if @operation = 1
 	BEGIN
-		select * from ORDENES where Id = @Id;
-	END
-
-	else if @operation = 1
-	BEGIN
-		Select * from ORDENES;
+		SELECT [Id]
+		  ,[EmpleadoID]
+		  ,[DetallerOrdenes]
+	  FROM [dbo].[ORDENES]
+	  where Id = @Id;
 	END
 
 	else if @operation = 2
+	BEGIN
+		SELECT [Id]
+		  ,[EmpleadoID]
+		  ,[DetallerOrdenes]
+		FROM [dbo].[ORDENES];
+	END
+
+	else if @operation = 3
 	BEGIN
 		INSERT INTO [dbo].[ORDENES]
            ([Id]
@@ -52,7 +59,7 @@ BEGIN
            ,@DetallerOrdenes)
 	END
 
-	else if @operation = 3
+	else if @operation = 4
 	BEGIN
 		UPDATE [dbo].[ORDENES]
 	   SET [Id] = @Id

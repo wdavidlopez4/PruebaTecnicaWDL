@@ -62,7 +62,7 @@ namespace PruebaTecnicaWDL.WebApi.Employees
             return Ok(dto);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("modify")]
         public async Task<IActionResult> Modify(ModifyEmployeeRequest request)
         {
